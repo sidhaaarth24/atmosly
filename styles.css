@@ -1,0 +1,1146 @@
+* {
+    box-sizing: border-box
+}
+
+:root {
+    --bg: #f5f7fb;
+    --surface: #fff;
+    --surface2: #f7f9fc;
+    --text: #172033;
+    --muted: #8791a4;
+    --line: #e9edf4;
+    --accent: #6c79ee;
+    --accent2: #8d98ff;
+    --shadow: 0 10px 35px rgba(32, 48, 84, .045);
+    --green: #38b98b
+}
+
+[data-theme="dark"] {
+    --bg: #101522;
+    --surface: #191f2e;
+    --surface2: #20283a;
+    --text: #eef2ff;
+    --muted: #9ba7bd;
+    --line: #2a3448;
+    --accent: #929cff;
+    --accent2: #727ff2;
+    --shadow: 0 10px 35px rgba(0, 0, 0, .16)
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "DM Sans", sans-serif;
+    transition: background .25s, color .25s
+}
+
+button,
+input {
+    font: inherit
+}
+
+.app-shell {
+    max-width: 1600px;
+    min-height: 100vh;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 248px minmax(0, 1fr)
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font: 800 23px Manrope, sans-serif;
+    letter-spacing: -1.2px;
+    margin: 0 0 52px 8px
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    background: #eef0ff;
+    color: #6d79ee;
+    border-radius: 11px;
+    font-size: 22px
+}
+
+.location-kicker,
+.section-eyebrow {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--muted)
+}
+
+.main-content {
+    padding: 25px clamp(22px, 4vw, 62px) 22px;
+    min-width: 0;
+    max-width: 1360px;
+    width: 100%;
+    margin: auto
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 9px
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0 10px;
+    height: 37px;
+    width: 205px
+}
+
+.search-box>span {
+    font-size: 20px;
+    color: var(--muted)
+}
+
+.search-box input {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--text);
+    width: 100%;
+    font-size: 11px
+}
+
+.search-box kbd {
+    font-size: 9px;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    padding: 2px 5px;
+    border-radius: 4px
+}
+
+.icon-button,
+.date-pill {
+    height: 37px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0 11px;
+    font-size: 12px
+}
+
+.date-pill {
+    font-size: 10px;
+    color: var(--muted);
+    padding: 0 13px
+}
+
+.welcome-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin: 43px 0 31px
+}
+
+.eyebrow {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #828ce8;
+    margin: 0 0 10px
+}
+
+.welcome-row h1 {
+    font: 700 clamp(27px, 3vw, 39px)/1.18 Manrope, sans-serif;
+    letter-spacing: -1.5px;
+    margin: 0
+}
+
+.welcome-row h1 span {
+    color: var(--accent)
+}
+
+.subheading {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 12px 0 0
+}
+
+.updated {
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    padding-bottom: 6px
+}
+
+.live-dot,
+.map-live i {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #42c69b;
+    border-radius: 50%;
+    margin-right: 7px;
+    box-shadow: 0 0 0 4px #42c69b20
+}
+
+.location-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 17px
+}
+
+.location-kicker {
+    margin-bottom: 5px
+}
+
+.location-heading h2 {
+    font: 700 21px Manrope;
+    margin: 0;
+    letter-spacing: -.6px
+}
+
+.pin {
+    color: var(--accent);
+    font-size: 16px
+}
+
+.location-heading p {
+    color: var(--muted);
+    font-size: 10px;
+    margin: 5px 0 0
+}
+
+.condition-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 9px 13px;
+    border-radius: 9px;
+    font-size: 10px;
+    color: var(--muted)
+}
+
+.condition-tag span:first-child {
+    font-size: 16px
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, .86fr) minmax(0, 1.55fr);
+    gap: 15px
+}
+
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    box-shadow: var(--shadow)
+}
+
+.current-card {
+    padding: 20px 22px 0;
+    background: linear-gradient(140deg, var(--surface), var(--surface2));
+    overflow: hidden
+}
+
+.current-top,
+.metric-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    letter-spacing: 1.1px;
+    font-weight: 800;
+    color: var(--muted)
+}
+
+.sunny-chip {
+    font-size: 8px;
+    letter-spacing: .5px;
+    background: #fff4df;
+    color: #c99439;
+    padding: 6px 8px;
+    border-radius: 20px
+}
+
+.sunny-chip i {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #e9b44c;
+    margin-right: 4px
+}
+
+.current-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 21px 0 10px
+}
+
+.temperature {
+    font: 700 clamp(58px, 6vw, 76px)/1 Manrope;
+    letter-spacing: -5px
+}
+
+.temperature sup {
+    font-size: 31px;
+    vertical-align: top;
+    letter-spacing: -1px
+}
+
+.feels {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 7px
+}
+
+.feels b {
+    color: var(--text)
+}
+
+.weather-art {
+    width: 120px;
+    height: 105px;
+    position: relative;
+    display: grid;
+    place-items: center
+}
+
+.sun-core {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: linear-gradient(140deg, #ffe49a, #ffb94e);
+    box-shadow: 0 0 0 10px #ffc75b18, 0 0 35px #ffc75b55;
+    position: absolute;
+    top: 5px;
+    right: 18px
+}
+
+.cloud {
+    position: absolute;
+    background: #dfe7f4;
+    height: 25px;
+    border-radius: 30px;
+    box-shadow: inset 0 -3px 4px #b7c6da
+}
+
+.cloud:before,
+.cloud:after {
+    content: "";
+    position: absolute;
+    background: inherit;
+    border-radius: 50%
+}
+
+.cloud:before {
+    width: 27px;
+    height: 27px;
+    top: -13px;
+    left: 14px
+}
+
+.cloud:after {
+    width: 34px;
+    height: 34px;
+    top: -18px;
+    left: 34px
+}
+
+.cloud-one {
+    width: 80px;
+    bottom: 15px;
+    left: 5px
+}
+
+.cloud-two {
+    width: 45px;
+    height: 16px;
+    bottom: 5px;
+    right: 0;
+    opacity: .8
+}
+
+.current-description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    margin: 8px 0 17px
+}
+
+.current-description span {
+    color: var(--muted);
+    font-size: 9px
+}
+
+.current-footer {
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 0 15px;
+    color: var(--accent);
+    font-size: 12px
+}
+
+.current-footer b {
+    color: var(--text);
+    font-size: 10px;
+    margin-left: 4px
+}
+
+.current-footer small {
+    display: block;
+    color: var(--muted);
+    font-size: 8px;
+    margin: 3px 0 0 18px
+}
+
+.hourly-card {
+    padding: 20px 21px 16px;
+    min-width: 0
+}
+
+.panel-heading,
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.panel-heading h3,
+.section-title h3 {
+    font: 700 15px Manrope;
+    margin: 5px 0 0;
+    letter-spacing: -.3px
+}
+
+.subtle {
+    font-size: 9px;
+    color: var(--muted)
+}
+
+.hourly-chart {
+    height: 155px;
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    padding-top: 16px
+}
+
+.hour-item {
+    min-width: 46px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 9px;
+    color: var(--muted);
+    position: relative
+}
+
+.hour-item .hour-icon {
+    font-size: 15px;
+    margin-top: 12px
+}
+
+.hour-item .hour-temp {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 10px
+}
+
+.rain-dot {
+    width: 4px;
+    height: 4px;
+    background: #78a8f4;
+    border-radius: 50%;
+    margin-bottom: 6px
+}
+
+.hourly-legend {
+    display: flex;
+    gap: 18px;
+    font-size: 8px;
+    color: var(--muted);
+    margin-top: 8px
+}
+
+.hourly-legend i {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 5px
+}
+
+.legend-temp {
+    background: var(--accent)
+}
+
+.legend-rain {
+    background: #78a8f4
+}
+
+.section-block {
+    margin-top: 29px
+}
+
+.section-title {
+    margin-bottom: 13px
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 11px
+}
+
+.metric-card {
+    padding: 15px 17px 12px;
+    min-height: 130px
+}
+
+.metric-icon {
+    font-size: 17px;
+    color: var(--accent)
+}
+
+.metric-card>strong {
+    display: block;
+    font: 700 25px Manrope;
+    letter-spacing: -.8px;
+    margin: 13px 0 3px
+}
+
+.metric-card>strong small {
+    font: 500 10px "DM Sans";
+    color: var(--muted);
+    letter-spacing: 0
+}
+
+.metric-card>p {
+    font-size: 9px;
+    color: var(--muted);
+    margin: 0 0 12px
+}
+
+.metric-foot {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+    font-size: 8px;
+    color: var(--muted)
+}
+
+.metric-foot b {
+    color: var(--text);
+    font-size: 8px
+}
+
+.meter,
+.uv-scale,
+.aqi-scale {
+    height: 4px;
+    border-radius: 9px;
+    background: var(--surface2);
+    margin: -3px 0 10px;
+    overflow: hidden
+}
+
+.meter i,
+.uv-scale i,
+.aqi-scale i {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 9px;
+    background: linear-gradient(90deg, #54c99a, #f0c65c, #ed8d69);
+    transition: width .4s
+}
+
+.uv-scale i {
+    background: linear-gradient(90deg, #67c98e, #f0cb52, #ed6b69)
+}
+
+.aqi-scale i {
+    background: linear-gradient(90deg, #53c78b, #f1c454, #ed7566)
+}
+
+.split-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px
+}
+
+.daylight-panel,
+.map-panel {
+    padding: 19px 20px
+}
+
+.moon-phase {
+    font-size: 9px;
+    color: var(--accent);
+    background: #f0f1ff;
+    padding: 6px 9px;
+    border-radius: 20px
+}
+
+.daylight-visual {
+    margin: 25px 0 18px
+}
+
+.daylight-track {
+    height: 8px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #9ca9d2, #f8cf75 22%, #f9e6aa 50%, #f8cf75 78%, #9ca9d2);
+    position: relative
+}
+
+.daylight-sun,
+.daylight-moon {
+    position: absolute;
+    top: -10px;
+    font-size: 18px
+}
+
+.daylight-sun {
+    left: 20%;
+    color: #e8ad46
+}
+
+.daylight-moon {
+    right: 5%;
+    color: #9ca9d2
+}
+
+.daylight-times {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px
+}
+
+.daylight-times span {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+}
+
+.daylight-times b {
+    font-size: 10px
+}
+
+.daylight-times small {
+    font-size: 8px;
+    color: var(--muted)
+}
+
+.daylight-duration {
+    text-align: center
+}
+
+.moon-details {
+    border-top: 1px solid var(--line);
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+.moon-graphic {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #dce2f1 50%, #8994ae 50%);
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 24px
+}
+
+.moon-details>div:nth-child(2) {
+    flex: 1
+}
+
+.moon-details b {
+    font-size: 10px
+}
+
+.moon-details p {
+    font-size: 8px;
+    color: var(--muted);
+    margin: 4px 0 0
+}
+
+.moon-extra {
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+}
+
+.moon-extra small {
+    font-size: 7px;
+    color: var(--muted);
+    letter-spacing: .8px
+}
+
+.moon-extra b {
+    font-size: 9px
+}
+
+#weatherMap {
+    height: 205px;
+    margin-top: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--surface2)
+}
+
+.map-live {
+    font-size: 8px;
+    color: var(--muted)
+}
+
+.map-live i {
+    width: 5px;
+    height: 5px
+}
+
+.map-caption {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 8px;
+    margin-top: 9px
+}
+
+.map-caption span:first-child {
+    color: var(--text)
+}
+
+.map-pin-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #7c88ef;
+    border-radius: 50%;
+    margin-right: 6px
+}
+
+.week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 9px
+}
+
+.day-card {
+    padding: 14px 8px;
+    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px
+}
+
+.day-card .day-name {
+    font-size: 9px;
+    color: var(--muted)
+}
+
+.day-card .day-icon {
+    font-size: 21px;
+    margin: 11px 0
+}
+
+.day-card .day-condition {
+    font-size: 8px;
+    color: var(--muted);
+    min-height: 19px
+}
+
+.day-card .day-temps {
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 7px
+}
+
+.day-card .day-temps span {
+    color: var(--muted);
+    font-weight: 500;
+    margin-left: 4px
+}
+
+footer.footer {
+    width: 100%;
+    margin: 30px auto 28px;
+    padding: 16px 2px 0;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.7;
+    text-align: center
+}
+
+.footer p {
+    margin: 0
+}
+
+.footer p + p {
+    margin-top: 3px
+}
+
+.footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700
+}
+
+.footer a:hover {
+    text-decoration: underline
+}
+
+.footer a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px
+}
+
+.brand-mini {
+    font-weight: 800;
+    color: var(--text);
+    font-size: 10px
+}
+
+.toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    background: #20283a;
+    color: #fff;
+    padding: 11px 16px;
+    border-radius: 9px;
+    font-size: 11px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .25s;
+    z-index: 1000
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0)
+}
+
+.loading-line {
+    font-size: 10px;
+    color: var(--muted);
+    margin: auto
+}
+
+.leaflet-control-attribution {
+    font-size: 7px !important
+}
+
+.mobile-nav {
+    display: none
+}
+
+@media(min-width:1500px) {
+    .main-content {
+        padding-top: 34px
+    }
+
+    .metrics-grid {
+        grid-template-columns: repeat(3, 1fr)
+    }
+
+    .panel {
+        border-radius: 17px
+    }
+}
+
+@media(max-width:1050px) {
+    .app-shell {
+        grid-template-columns: 205px minmax(0, 1fr)
+    }
+
+    .main-content {
+        padding: 22px 24px
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr
+    }
+
+    .current-card {
+        min-height: 245px
+    }
+
+    .current-main {
+        max-width: 420px
+    }
+
+    .hourly-card {
+        min-height: 230px
+    }
+
+    .metrics-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+
+    .split-section {
+        grid-template-columns: 1fr
+    }
+}
+
+@media(max-width:720px) {
+    .app-shell {
+        display: block
+    }
+
+    .main-content {
+        padding: 16px 15px 24px
+    }
+
+    .topbar {
+        align-items: center
+    }
+
+    .top-actions {
+        gap: 6px
+    }
+
+    .search-box {
+        width: min(35vw, 150px);
+        height: 34px;
+        padding: 0 7px
+    }
+
+    .search-box input {
+        font-size: 10px;
+        min-width: 0
+    }
+
+    .search-box kbd,
+    .date-pill {
+        display: none
+    }
+
+    .icon-button {
+        height: 34px;
+        padding: 0 9px
+    }
+
+    .welcome-row {
+        margin: 32px 0 24px;
+        align-items: start
+    }
+
+    .welcome-row h1 {
+        font-size: 29px
+    }
+
+    .welcome-row .subheading {
+        font-size: 10px
+    }
+
+    .updated {
+        font-size: 7px;
+        white-space: nowrap;
+        margin-top: 4px
+    }
+
+    .location-heading h2 {
+        font-size: 18px
+    }
+
+    .condition-tag {
+        font-size: 9px;
+        padding: 7px 9px
+    }
+
+    .hero-grid {
+        gap: 10px
+    }
+
+    .current-card {
+        padding: 17px 17px 0
+    }
+
+    .temperature {
+        font-size: 65px
+    }
+
+    .hourly-card {
+        padding: 17px
+    }
+
+    .section-block {
+        margin-top: 23px
+    }
+
+    .metrics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px
+    }
+
+    .metric-card {
+        padding: 13px;
+        min-height: 126px
+    }
+
+    .metric-card>strong {
+        font-size: 23px
+    }
+
+    .split-section {
+        gap: 10px
+    }
+
+    .daylight-panel,
+    .map-panel {
+        padding: 16px
+    }
+
+    .week-grid {
+        grid-template-columns: repeat(7, minmax(66px, 1fr));
+        overflow-x: auto;
+        padding-bottom: 5px
+    }
+
+    .day-card {
+        min-width: 66px;
+        padding: 12px 5px
+    }
+
+    .section-title h3,
+    .panel-heading h3 {
+        font-size: 14px
+    }
+
+    footer {
+        gap: 10px;
+        flex-wrap: wrap
+    }
+
+    .desktop-break {
+        display: none
+    }
+}
+
+@media(max-width:390px) {
+    .main-content {
+        padding-left: 11px;
+        padding-right: 11px
+    }
+
+    .welcome-row h1 {
+        font-size: 25px
+    }
+
+    .updated {
+        display: none
+    }
+
+    .temperature {
+        font-size: 58px
+    }
+
+    .weather-art {
+        transform: scale(.82);
+        transform-origin: right center;
+        width: 100px
+    }
+
+    .current-description {
+        font-size: 10px
+    }
+
+    .current-footer {
+        font-size: 10px
+    }
+
+    .current-footer b {
+        font-size: 9px
+    }
+
+    .condition-tag {
+        max-width: 115px
+    }
+
+    .condition-tag span:last-child {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+}
+
+@media(orientation:landscape) and (max-height:600px) and (min-width:721px) {
+    .welcome-row {
+        margin: 23px 0
+    }
+
+    .current-card {
+        min-height: 220px
+    }
+
+    .hourly-chart {
+        height: 125px
+    }
+
+    .section-block {
+        margin-top: 19px
+    }
+}
+
+.app-shell {
+    grid-template-columns: minmax(0, 1fr)
+}
+
+.header-brand {
+    margin: 0;
+    flex: 0 0 auto
+}
+
+@media(max-width:720px) {
+    .topbar {
+        gap: 8px
+    }
+
+    .header-brand {
+        gap: 7px;
+        font-size: 17px;
+        letter-spacing: -.7px
+    }
+
+    .header-brand .brand-mark {
+        width: 26px;
+        height: 26px;
+        font-size: 17px
+    }
+}

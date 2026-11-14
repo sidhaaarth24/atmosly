@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101827" />
+  <meta name="description" content="Atmosly — a clear, beautiful weather dashboard." />
+  <title>Atmosly | Weather Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <main class="main-content">
+      <header class="topbar">
+        <a class="brand header-brand" href="#" aria-label="Atmosly home">Atmosly</a>
+        <div class="top-actions">
+          <form id="searchForm" class="search-box"><span>⌕</span><input id="citySearch" type="search" placeholder="Search city..." autocomplete="off" aria-label="Search city"><kbd>↵</kbd></form>
+          <button class="icon-button" id="unitToggle" title="Toggle Celsius / Fahrenheit">°C</button>
+          <button class="icon-button" id="themeToggle" title="Toggle light / dark mode">◐</button>
+        </div>
+      </header>
+
+      <section class="welcome-row">
+        <div><p class="eyebrow">YOUR WEATHER, REIMAGINED</p><h1>Good weather starts<br class="desktop-break"> with a <span>clear view.</span></h1><p class="subheading">A little more clarity for whatever today brings.</p></div>
+        <div class="updated"><span class="live-dot"></span><span id="updatedAt">LIVE CONDITIONS</span></div>
+      </section>
+
+      <section class="location-heading" id="overview">
+        <div><div class="location-kicker">CURRENT LOCATION</div><h2 id="cityName">Patna, India <span class="pin">⌖</span></h2><p id="localTime">Local time loading…</p></div>
+        <div class="condition-tag"><span id="conditionIcon">☀️</span><span id="conditionText">Mostly sunny</span></div>
+      </section>
+
+      <section class="hero-grid">
+        <article class="current-card panel">
+          <div class="current-top"><span>RIGHT NOW</span><span class="sunny-chip"><i></i> CURRENT WEATHER</span></div>
+          <div class="current-main"><div><div class="temperature" id="temperature">--<sup>°</sup></div><div class="feels">Feels like <b id="feelsLike">--°</b></div></div><div class="weather-art" id="weatherArt"><span class="sun-core"></span><span class="cloud cloud-one"></span><span class="cloud cloud-two"></span></div></div>
+          <div class="current-description"><b id="conditionSummary">Loading conditions</b><span id="highLow">H: --° &nbsp; L: --°</span></div>
+          <div class="current-footer"><span>☀️ <b id="sunrise">--:--</b> <small>Sunrise</small></span><span>🌙<b id="sunset">--:--</b> <small>Sunset</small></span><span>⏱️<b id="dayLength">--h --m</b> <small>Daylight</small></span></div>
+        </article>
+
+        <article class="hourly-card panel" id="forecast">
+          <div class="panel-heading"><div><span class="section-eyebrow">THE NEXT HOURS</span><h3>Hourly forecast</h3></div><span class="subtle">Next 24 hours</span></div>
+          <div class="hourly-chart" id="hourlyChart"><div class="loading-line">Loading hourly forecast…</div></div>
+          <div class="hourly-legend"><span><i class="legend-temp"></i> Temperature</span><span><i class="legend-rain"></i> Chance of rain</span></div>
+        </article>
+      </section>
+
+      <section class="section-block">
+        <div class="section-title"><div><span class="section-eyebrow">THE DETAILS</span><h3>Today’s conditions</h3></div><span class="subtle">Live atmospheric data</span></div>
+        <div class="metrics-grid">
+          <article class="metric-card panel"><div class="metric-top"><span>WIND</span><span class="metric-icon">💨</span></div><strong id="wind">-- <small>km/h</small></strong><p id="windDirection">Direction —</p><div class="metric-foot"><span>Gusts</span><b id="gusts">-- km/h</b></div></article>
+          <article class="metric-card panel"><div class="metric-top"><span>HUMIDITY</span><span class="metric-icon">💦</span></div><strong id="humidity">--<small>%</small></strong><p>Relative humidity</p><div class="meter"><i id="humidityMeter"></i></div><div class="metric-foot"><span>Comfort</span><b id="comfort">—</b></div></article>
+          <article class="metric-card panel"><div class="metric-top"><span>PRESSURE</span><span class="metric-icon">🎚️</span></div><strong id="pressure">-- <small>hPa</small></strong><p>Atmospheric pressure</p><div class="metric-foot"><span>Trend</span><b id="pressureTrend">—</b></div></article>
+          <article class="metric-card panel"><div class="metric-top"><span>UV INDEX</span><span class="metric-icon">☀️</span></div><strong id="uv">--</strong><p id="uvLabel">UV exposure</p><div class="uv-scale"><i id="uvMeter"></i></div><div class="metric-foot"><span>Protection</span><b id="uvAdvice">—</b></div></article>
+          <article class="metric-card panel"><div class="metric-top"><span>RAINFALL</span><span class="metric-icon">🌧</span></div><strong id="rain">-- <small>mm</small></strong><p>Precipitation today</p><div class="metric-foot"><span>Rain chance</span><b id="rainChance">--%</b></div></article>
+          <article class="metric-card panel"><div class="metric-top"><span>AIR QUALITY</span><span class="metric-icon">🌫</span></div><strong id="aqi">--</strong><p id="aqiLabel">US AQI · Loading</p><div class="aqi-scale"><i id="aqiMeter"></i></div><div class="metric-foot"><span>PM2.5</span><b id="pm25">-- μg/m³</b></div></article>
+        </div>
+      </section>
+
+      <section class="section-block split-section">
+        <article class="panel daylight-panel">
+          <div class="panel-heading"><div><span class="section-eyebrow">SUN & MOON</span><h3>Daylight & night</h3></div><span class="moon-phase" id="moonPhase">◔ Waxing</span></div>
+          <div class="daylight-visual"><div class="daylight-track"><span class="daylight-sun">☀️</span><span class="daylight-moon">🌙</span></div><div class="daylight-times"><span><b id="dayStart">--:--</b><small>Sunrise</small></span><span class="daylight-duration"><b id="dayHours">-- hours</b><small>of daylight</small></span><span><b id="dayEnd">--:--</b><small>Sunset</small></span></div></div>
+          <div class="moon-details"><div class="moon-graphic" id="moonGraphic">◐</div><div><b id="moonName">Moon phase</b><p id="moonIllumination">Illumination —</p></div><div class="moon-extra"><small>MOONRISE</small><b id="moonrise">--:--</b></div><div class="moon-extra"><small>MOONSET</small><b id="moonset">--:--</b></div></div>
+        </article>
+        <article class="panel map-panel" id="map-section"><div class="panel-heading"><div><span class="section-eyebrow">EXPLORE CONDITIONS</span><h3>Weather around you</h3></div><span class="map-live"><i></i> Live map</span></div><div id="weatherMap" role="application" aria-label="Map showing current weather location"></div><div class="map-caption"><span><i class="map-pin-dot"></i><b id="mapCity">Patna</b></span><span>Map data © OpenStreetMap</span></div></article>
+      </section>
+
+      <section class="section-block weekly-section">
+        <div class="section-title"><div><span class="section-eyebrow">PLAN AHEAD</span><h3>7-day forecast</h3></div><span class="subtle">A look at the week</span></div>
+        <div class="week-grid" id="weekForecast"><div class="loading-line">Loading your week…</div></div>
+      </section>
+      <footer class="footer">
+        <p>© 2026 Atmosly. All rights reserved.</p>
+        <p>Developed by <a href="https://sidhaaarth24.github.io/sidsphere/" target="_blank" rel="noopener noreferrer"><strong>Sidharth Kumar</strong></a></p>
+      </footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
